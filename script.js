@@ -28,6 +28,10 @@ document.addEventListener('DOMContentLoaded', function() {
             {
                 "name": "zipapi",
                 "url": "https://pyapi326.github.io/zipapi/"
+            },
+            {
+                "name":"trm",
+                "url":"https://pyapi326.github.io/trm"
             }
         ];
 
