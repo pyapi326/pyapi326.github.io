@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n-key="title">ZIP Website</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- 添加语言切换功能 -->
+    <script>
+        // 语言映射表
+        const translations = {
+            'en': {
+                'title': 'ZIP Website',
+                'intro': 'This tool simplifies zlib greatly, reducing all zlib functions to one or two lines. Version 1.0.1',
+                'static_download': 'Static download (without libzlib.dll, with libzip.dll, libzip.dll.a): static.zip',
+                'dynamic_download': 'Dynamic download (with libzlib.dll, libzip.dll, libzip.dll.a): dynamic.zip',
+                'code_download': 'Code download (with source code): codezip.zip',
+                'dependency_notice': 'This tool depends on zlib.',
+                'lang_en': 'English',
+                'lang_zh': '中文'
+            },
+            'zh': {
+                'title': 'ZIP网站',
+                'intro': '此工具是将zlib大大的简化，已经把zlib的所有功能都简化了，只有一行或两行。1.0.1',
+                'static_download': '静态下载(没有libzlib.dll有libzip.dll,libzip.dll.a): static.zip',
+                'dynamic_download': '动态下载(有libzlib.dll,libzip.dll,libzip.dll.a): dynamic.zip',
+                'code_download': '代码下载(有源代码): codezip.zip',
+                'dependency_notice': '此工具依赖于 zlib。',
+                'lang_en': 'English',
+                'lang_zh': '中文'
+            }
+        };
+
+        // 设置语言
+        function setLanguage(lang) {
+            document.documentElement.lang = lang;
+            localStorage.setItem('preferredLanguage', lang);
+            
+            // 更新所有带i18n-key属性的元素
+            document.querySelectorAll('[data-i18n-key]').forEach(el => {
+                const key = el.getAttribute('data-i18n-key');
+                if (translations[lang][key]) {
+                    el.textContent = translations[lang][key];
+                }
+            });
+        }
+
+        // 初始化语言
+        document.addEventListener('DOMContentLoaded', () => {
+            const preferredLang = localStorage.getItem('preferredLanguage') || 'en';
+            setLanguage(preferredLang);
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <!-- 添加语言选择按钮 -->
+        <div class="language-switcher">
+            <button onclick="setLanguage('en')" data-i18n-key="lang_en">English</button>
+            <button onclick="setLanguage('zh')" data-i18n-key="lang_zh">中文</button>
+        </div>
+        <img src="ui.png" alt="ZIP Logo" id="zip-logo">
+    </header>
+    <main>
+        <p data-i18n-key="intro">此工具是将zlib大大的简化，已经把zlib的所有功能都简化了，只有一行或两行。1.0.1</p>
+        <div class="downloads">
+            <a href="/download/static.zip" download data-i18n-key="static_download">静态下载(没有libzlib.dll有libzip.dll,libzip.dll.a): static.zip</a><br>
+            <a href="/download/dynamic.zip" download data-i18n-key="dynamic_download">动态下载(有libzlib.dll,libzip.dll,libzip.dll.a): dynamic.zip</a><br>
+            <a href="/download/codezip.zip" download data-i18n-key="code_download">代码下载(有源代码): codezip.zip</a>
+        </div>
+        <p class="dependency-notice" data-i18n-key="dependency_notice">此工具依赖于 zlib。</p>
+    </main>
+</body>
+</html>
