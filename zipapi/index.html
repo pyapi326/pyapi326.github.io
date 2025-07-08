@@ -7,27 +7,27 @@
     <link rel="stylesheet" href="styles.css">
     <!-- 添加语言切换功能 -->
     <script>
-        // 语言映射表
+        // 内联翻译内容（原JSON文件内容）
         const translations = {
-            'en': {
-                'title': 'ZIP Website',
-                'intro': 'This tool simplifies zlib greatly, reducing all zlib functions to one or two lines. Version 1.0.1',
-                'static_download': 'Static download (without libzlib.dll, with libzip.dll, libzip.dll.a): static.zip',
-                'dynamic_download': 'Dynamic download (with libzlib.dll, libzip.dll, libzip.dll.a): dynamic.zip',
-                'code_download': 'Code download (with source code): codezip.zip',
-                'dependency_notice': 'This tool depends on zlib.',
-                'lang_en': 'English',
-                'lang_zh': '中文'
+            "en": {
+                "title": "ZIP Website",
+                "intro": "This tool greatly simplifies zlib, reducing all zlib functions to just one or two lines. Version 1.0.1",
+                "static_download": "Static download (without libzlib.dll, includes libzip.dll and libzip.dll.a,Meaning explanation: It is already connected to the static library of libzlib.dll, so it is not included. However, because if a bug occurs during the module update, you cannot replace it): static.zip",
+                "dynamic_download": "Dynamic download (includes libzlib.dll, libzip.dll and libzip.dll.a,Meaning explanation: It means that the dynamic library of libzlib.dll has been connected in, so it is included. If zlib is updated, you only need to replace it): dynamic.zip",
+                "code_download": "Source code download: codezip.zip",
+                "dependency_notice": "This tool depends on zlib.",
+                "lang_en": "English",
+                "lang_zh": "中文"
             },
-            'zh': {
-                'title': 'ZIP网站',
-                'intro': '此工具是将zlib大大的简化，已经把zlib的所有功能都简化了，只有一行或两行。1.0.1',
-                'static_download': '静态下载(没有libzlib.dll有libzip.dll,libzip.dll.a): static.zip',
-                'dynamic_download': '动态下载(有libzlib.dll,libzip.dll,libzip.dll.a): dynamic.zip',
-                'code_download': '代码下载(有源代码): codezip.zip',
-                'dependency_notice': '此工具依赖于 zlib。',
-                'lang_en': 'English',
-                'lang_zh': '中文'
+            "zh": {
+                "title": "ZIP网站",
+                "intro": "此工具是将zlib大大的简化，已经把zlib的所有功能都简化了，只有一行或两行。1.0.1",
+                "static_download": "静态下载(没有libzlib.dll有libzip.dll,libzip.dll.a,含义解释:就是已经libzlib.dll他的静态库连接进去，所以不包含,但，因为如果模块更新出现bug你无法更换。): static.zip",
+                "dynamic_download": "动态下载(有libzlib.dll,libzip.dll,libzip.dll.a,含义解释:就是已经libzlib.dll他的动态库连接进去，所以包含,如果zlib更新了，你只用替换就行。): dynamic.zip",
+                "code_download": "代码下载(有源代码): codezip.zip",
+                "dependency_notice": "此工具依赖于 zlib。",
+                "lang_en": "English",
+                "lang_zh": "中文"
             }
         };
 
@@ -45,7 +45,7 @@
             });
         }
 
-        // 初始化语言
+        // 初始化语言（简化逻辑）
         document.addEventListener('DOMContentLoaded', () => {
             const preferredLang = localStorage.getItem('preferredLanguage') || 'en';
             setLanguage(preferredLang);
@@ -54,7 +54,6 @@
 </head>
 <body>
     <header>
-        <!-- 添加语言选择按钮 -->
         <div class="language-switcher">
             <button onclick="setLanguage('en')" data-i18n-key="lang_en">English</button>
             <button onclick="setLanguage('zh')" data-i18n-key="lang_zh">中文</button>
